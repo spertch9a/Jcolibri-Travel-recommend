@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+<class name="com.demo.app.TravelDescription" table="travel">
+	<id name="caseId" column="caseId">
+	</id>
+	<property name="HolidayType" column="HolidayType"/>
+	<property name="NumberOfPersons" column="NumberOfPersons"/>
+	<many-to-one name="Region" column="regionId" not-null="true" cascade="save-update"/> 
+	<property name="Transportation" column="Transportation"/>
+	<property name="Duration" column="Duration"/>
+	<property name="Season" column="Season"/>
+	<property name="Accommodation" column="Accommodation">
+		<type name="jcolibri.connector.databaseutils.EnumUserType">
+			<param name="enumClassName">jcolibri.test.test4.TravelDescription$AccommodationTypes</param>
+    	</type>
+  	</property>
+</class>
+
+<class name="com.demo.app.Region" table="region">
+	<id name="id" column="regionId">
+		<generator class="increment"/>
+	</id>
+	<property name="region" column="RegionName"/>
+	<property name="city" column="NearestCity"/>
+	<property name="airport" column="Airport"/>
+	<property name="currency" column="Currency"/>
+</class>
+</hibernate-mapping>
