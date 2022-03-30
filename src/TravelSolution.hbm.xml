@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+<class name="jcolibri.test.test4.TravelSolution" table="travel">
+	<id name="id" column="caseId">
+	</id>
+	<property name="price" column="Price"/>
+	<property name="hotel" column="Hotel"/>	
+</class>
+
+</hibernate-mapping>
