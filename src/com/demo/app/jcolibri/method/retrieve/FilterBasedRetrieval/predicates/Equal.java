@@ -8,7 +8,9 @@
  */
 package com.demo.app.jcolibri.method.retrieve.FilterBasedRetrieval.predicates;
 
-import jcolibri.exception.NoApplicableFilterPredicateException;
+import com.demo.app.jcolibri.exception.NoApplicableFilterPredicateException;
+import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
+
 
 /**
  * Predicate that compares if two objects are equal.
@@ -18,9 +20,17 @@ import jcolibri.exception.NoApplicableFilterPredicateException;
  * @see jcolibri.method.retrieve.FilterBasedRetrieval.FilterBasedRetrievalMethod
  * @see jcolibri.method.retrieve.FilterBasedRetrieval.FilterConfig
  */
-public class Equal implements FilterPredicate
+public class Equal extends Interval implements FilterPredicate
 {
-    public boolean compute(Object caseObject, Object queryObject) throws NoApplicableFilterPredicateException
+	/**
+	 * Constructor.
+	 *
+	 */
+	public Equal() {
+		super(interval);
+	}
+
+	public boolean compute(Object caseObject, Object queryObject) throws NoApplicableFilterPredicateException
     {
 	if((caseObject == null)&&(queryObject==null))
 	    return true;

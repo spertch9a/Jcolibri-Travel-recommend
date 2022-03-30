@@ -1,5 +1,6 @@
 package com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.local;
 
+import com.demo.app.jcolibri.exception.NoApplicableFilterPredicateException;
 import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
 
@@ -31,7 +32,7 @@ public class Interval implements LocalSimilarityFunction {
 	 *            Number
 	 * @return result of apply the similarity function.
 	 */
-	public double compute(Object o1, Object o2) throws jcolibri.exception.NoApplicableSimilarityFunctionException{
+	public boolean compute(Object o1, Object o2) throws jcolibri.exception.NoApplicableSimilarityFunctionException, NoApplicableFilterPredicateException {
 		if ((o1 == null) || (o2 == null))
 			return 0;
 		if (!(o1 instanceof Number))

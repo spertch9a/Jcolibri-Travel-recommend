@@ -8,6 +8,8 @@
  */
 package com.demo.app.jcolibri.method.retrieve.FilterBasedRetrieval.predicates;
 
+import com.demo.app.jcolibri.exception.NoApplicableFilterPredicateException;
+
 /**
  * Interface for Predicates
  * @author Juan A. Recio-Garcia
@@ -24,5 +26,5 @@ public interface FilterPredicate
      * @return the result of the comparation
      * @throws jcolibri.exception.NoApplicableFilterPredicateException if the predicate cannot be applied to those objects.
      */
-    public boolean compute(Object caseObject, Object queryObject) throws jcolibri.exception.NoApplicableFilterPredicateException;
+    public boolean compute(Object caseObject, Object queryObject) throws jcolibri.exception.NoApplicableFilterPredicateException, NoApplicableFilterPredicateException;
 }

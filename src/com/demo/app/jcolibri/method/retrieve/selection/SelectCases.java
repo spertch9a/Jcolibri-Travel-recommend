@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.demo.app.jcolibri.cbrcore.CBRCase;
 import jcolibri.cbrcore.CBRCase;
 import jcolibri.method.retrieve.RetrievalResult;
 

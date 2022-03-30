@@ -9,6 +9,8 @@
 package com.demo.app.jcolibri.cbraplications;
 
 
+import com.demo.app.jcolibri.cbrcore.CBRCaseBase;
+import com.demo.app.jcolibri.exception.ExecutionException;
 import jcolibri.cbrcore.CBRCaseBase;
 import jcolibri.cbrcore.CBRQuery;
 import jcolibri.exception.ExecutionException;
@@ -40,7 +42,7 @@ public interface StandardCBRApplication
      * @return The created case base with the cases in the storage.
      * @throws ExecutionException
      */
-    public CBRCaseBase preCycle() throws ExecutionException;
+    public CBRCaseBase preCycle() throws ExecutionException, ExecutionException;
 
     /**
      * Executes a CBR cycle with the given query.

@@ -9,9 +9,13 @@
 package com.demo.app.jcolibri.method.retrieve.NNretrieval;
 
 
-import jcolibri.cbrcore.Attribute;
-import jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.app.jcolibri.cbrcore.Attribute;
+import com.demo.app.jcolibri.method.retrieve.FilterBasedRetrieval.predicates.Equal;
+import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
+import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
+import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
+
 
 /**
  * This class stores the configuration for the NN retrieval method.
@@ -32,7 +36,9 @@ public class NNConfig{
 	private java.util.HashMap<Attribute, Double> mapweight = new java.util.HashMap<Attribute, Double>();
 	
 	private GlobalSimilarityFunction descriptionSimFunction;
-	
+	private Attribute attribute;
+	private Equal similFunction;
+
 
 	public NNConfig()
 	{
@@ -45,18 +51,20 @@ public class NNConfig{
 		return descriptionSimFunction;
 	}
 	/**
-	 * @param descriptionSimFunction The description similarity function. to set.
-	 */
-	public void setDescriptionSimFunction(GlobalSimilarityFunction descriptionSimFunction) {
-		this.descriptionSimFunction = descriptionSimFunction;
+     * @param descriptionSimFunction The description similarity function. to set.
+     */
+	public void setDescriptionSimFunction(Average descriptionSimFunction) {
+		this.descriptionSimFunction = (GlobalSimilarityFunction) descriptionSimFunction;
 	}
 
 	/**
 	 * Sets the local similarity function to apply to a simple attribute.
 	 */
-	public void addMapping(Attribute attribute, LocalSimilarityFunction similFunction)
+	public void addMapping(Attribute attribute, Interval similFunction)
 	{
-		maplocal.put(attribute, similFunction);
+		this.attribute = attribute;
+		this.similFunction = (Equal) similFunction;
+		maplocal.put(attribute, (LocalSimilarityFunction) similFunction);
 	}
 	
 	/**
@@ -70,9 +78,9 @@ public class NNConfig{
 	/**
 	 * Sets the global similarity function to apply to a compound attribute.
 	 */
-	public void addMapping(Attribute attribute, GlobalSimilarityFunction similFunction)
+	public void addMapping(Attribute attribute, Average similFunction)
 	{
-		mapglobal.put(attribute, similFunction);
+		mapglobal.put(attribute, (GlobalSimilarityFunction) similFunction);
 	}
 	
 	/**
