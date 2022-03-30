@@ -73,7 +73,8 @@ public abstract class Test4 implements StandardCBRApplication {
 		System.out.println("Query:");
 		System.out.println(query);
 		System.out.println();
-		
+		//Blank description
+		query.setDescription(new TravelDescription());
 		/********* Execute NN ************/
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
 //		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(),
@@ -128,53 +129,7 @@ public abstract class Test4 implements StandardCBRApplication {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-	    	// Launch DDBB manager
-	    	jcolibri.test.database.HSQLDBserver.init();
+	public static void main(String[] args) {}
 
-		Test4 test4 = new Test4();
-		try {
-			test4.configure();
-			test4.preCycle();
-			
-			//BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));			
-			//do
-			//{		
-			/********* Query Definition **********/
-			TravelDescription queryDesc = new TravelDescription();
-			queryDesc.setAccommodation(TravelDescription.AccommodationTypes.ThreeStars);
-			queryDesc.setDuration(10);
-			queryDesc.setHolidayType("Recreation");
-			queryDesc.setNumberOfPersons(4);
-			
-			Region region = new Region();
-			region.setRegion("Bulgaria");
-			region.setCity("Sofia");
-			region.setCurrency("Euro");
-			region.setAirport("airport");
-			queryDesc.setRegion(region);
-			
-			CBRQuery query = new CBRQuery();
-			query.setDescription(queryDesc);
-			
-			test4.cycle(query);
-			
-			
-			//	System.out.println("Cycle finished. Type exit to idem");
-			//}while(!reader.readLine().equals("exit"));
-			
-			test4.postCycle();
-			
-			//Shutdown DDBB manager
-		    	jcolibri.test.database.HSQLDBserver.shutDown();
-
-		} catch (ExecutionException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 }
