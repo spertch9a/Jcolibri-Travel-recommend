@@ -8,15 +8,15 @@
  */
 package com.demo.app;
 
-import com.demo.app.jcolibri.cbrcore.Attribute;
-import com.demo.app.jcolibri.cbrcore.CaseComponent;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 
 /**
  * Bean that stores the solution of the case.
  * @author Juan A. Recio-Garcia
  * @version 1.0
  */ 
-public class TravelSolution implements CaseComponent{
+public class TravelSolution implements CaseComponent {
 
 	String id;
 	Integer price;

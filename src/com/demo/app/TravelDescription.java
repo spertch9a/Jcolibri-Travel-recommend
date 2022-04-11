@@ -8,9 +8,9 @@
  */
 package com.demo.app;
 
-import com.demo.app.jcolibri.cbrcore.Attribute;
-import com.demo.app.jcolibri.cbrcore.CaseComponent;
 
+import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 
 /**
  * Bean that stores the description of the case.

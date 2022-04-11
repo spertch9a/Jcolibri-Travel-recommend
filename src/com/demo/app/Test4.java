@@ -1,18 +1,20 @@
 package com.demo.app;
 
 
-import com.demo.app.jcolibri.casebase.LinealCaseBase;
-import com.demo.app.jcolibri.cbraplications.StandardCBRApplication;
-import com.demo.app.jcolibri.cbrcore.*;
-import com.demo.app.jcolibri.connector.DataBaseConnector;
-import com.demo.app.jcolibri.exception.ExecutionException;
-import com.demo.app.jcolibri.method.retrieve.FilterBasedRetrieval.predicates.Equal;
-import com.demo.app.jcolibri.method.retrieve.NNretrieval.NNConfig;
-import com.demo.app.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
-import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
-import com.demo.app.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
-import com.demo.app.jcolibri.method.retrieve.RetrievalResult;
-import com.demo.app.jcolibri.method.retrieve.selection.SelectCases;
+
+import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
+import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.*;
+import es.ucm.fdi.gaia.jcolibri.connector.DataBaseConnector;
+import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.selection.SelectCases;
+import es.ucm.fdi.gaia.jcolibri.util.FileIO;
 
 import java.util.Collection;
 
@@ -21,15 +23,16 @@ public abstract class Test4 implements StandardCBRApplication {
 
 	Connector _connector;
 	CBRCaseBase _caseBase;
-	
+	public CBRCaseBase mycases;
 	/* (non-Javadoc)
 	 * @see jcolibri.cbraplications.BasicCBRApplication#configure()
 	 */
 	public void configure() throws ExecutionException {
 		try{
 		_connector = (Connector) new DataBaseConnector();
-		_connector.initFromXMLfile(com.demo.app.jcolibri.util.FileIO.findFile("jcolibri/test/test4/databaseconfig.xml"));
+		_connector.initFromXMLfile(FileIO.findFile("jcolibri/test/test4/databaseconfig.xml"));
 		_caseBase  = (CBRCaseBase) new LinealCaseBase();
+		mycases = _caseBase;
 		} catch (Exception e){
 			throw new ExecutionException(e);
 		}
@@ -41,7 +44,7 @@ public abstract class Test4 implements StandardCBRApplication {
 	 */
 	public CBRCaseBase preCycle() throws ExecutionException {
 		_caseBase.init(_connector);	
-		for(com.demo.app.jcolibri.cbrcore.CBRCase c: _caseBase.getCases())
+		for(CBRCase c: _caseBase.getCases())
 			System.out.println(c);
 		return _caseBase;
 	}
@@ -74,7 +77,7 @@ public abstract class Test4 implements StandardCBRApplication {
 		System.out.println(query);
 		System.out.println();
 		//Blank description
-		query.setDescription(new TravelDescription());
+		query.setDescription((CaseComponent) new TravelDescription());
 		/********* Execute NN ************/
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
 //		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(),
@@ -82,7 +85,7 @@ public abstract class Test4 implements StandardCBRApplication {
 //				simConfig);
 		
 		/********* Select cases **********/
-		Collection<CBRCase> selectedcases = SelectCases.selectTopK(eval, 1);
+		Collection<CBRCase> selectedcases = SelectCases.selectTopK(eval, 3);
 		
 //		/********* Reuse **********/
 //		// Compute a direct proportion between the "NumberOfPersons" and "Price" attributes.
@@ -133,3 +136,6 @@ public abstract class Test4 implements StandardCBRApplication {
 
 
 }
+
+
+//Query definition

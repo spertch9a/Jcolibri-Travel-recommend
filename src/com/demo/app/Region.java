@@ -7,8 +7,10 @@
  * 10/01/2007
  */
 package com.demo.app;
-import com.demo.app.jcolibri.cbrcore.Attribute;
-import com.demo.app.jcolibri.cbrcore.CaseComponent;
+
+
+import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 
 /**
  * Compound attribute that stores the information of the region in the travel description.
