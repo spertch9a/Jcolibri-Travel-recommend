@@ -14,7 +14,8 @@ import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equ
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.selection.SelectCases;
-import es.ucm.fdi.gaia.jcolibri.util.FileIO;
+
+
 
 import java.util.Collection;
 
@@ -24,18 +25,32 @@ public abstract class Test4 implements StandardCBRApplication {
 	Connector _connector;
 	CBRCaseBase _caseBase;
 	public CBRCaseBase mycases;
-	/* (non-Javadoc)
-	 * @see jcolibri.cbraplications.BasicCBRApplication#configure()
-	 */
+
 	public void configure() throws ExecutionException {
-		try{
-		_connector = (Connector) new DataBaseConnector();
-		_connector.initFromXMLfile(FileIO.findFile("jcolibri/test/test4/databaseconfig.xml"));
-		_caseBase  = (CBRCaseBase) new LinealCaseBase();
-		mycases = _caseBase;
-		} catch (Exception e){
+		try {
+			// Create a data base connector
+			_connector = (Connector) new DataBaseConnector();
+
+			// Init the ddbb connector with the config file
+			_connector.initFromXMLfile(FileIO.findFile("com/demo/app/databaseconfig.xml"));
+
+
+			// Create a Lineal case base for in-memory organization
+			_caseBase = (CBRCaseBase) new LinealCaseBase();
+
+		} catch (Exception e) {
 			throw new ExecutionException(e);
 		}
+//		try{
+//		_connector = new DataBaseConnector();
+//		_connector.initFromXMLfile(FileIO.findFile("databaseconfig.xml"));
+////			_connector.initFromXMLfile(FileIO.findFile("jcolibri/test/test4/databaseconfig.xml"));
+//
+//			_caseBase  = (CBRCaseBase) new LinealCaseBase();
+//		mycases = _caseBase;
+//		} catch (Exception e){
+//			throw new ExecutionException(e);
+//		}
 	}
 
 	

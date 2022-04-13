@@ -6,7 +6,7 @@
  * http://gaia.fdi.ucm.es
  * 10/01/2007
  */
-package com.demo.app;
+package com.demo.second;
 
 
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
@@ -17,7 +17,7 @@ import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
  * This version includes a compound attribute to store the region.
  * @author Juan A. Recio-Garcia
  * @version 1.0
- * @see com.demo.app.Region
+ * @see com.demo.second.Region
  */
 public class TravelDescription implements CaseComponent {
 	
@@ -26,7 +26,7 @@ public class TravelDescription implements CaseComponent {
 	String  caseId;
 	String  HolidayType;
 	Integer NumberOfPersons;
-	Region  Region;
+	com.demo.second.Region Region;
 	String  Transportation;
 	Integer Duration;
 	String  Season;
@@ -104,13 +104,13 @@ public class TravelDescription implements CaseComponent {
 	/**
 	 * @return the region
 	 */
-	public Region getRegion() {
+	public com.demo.second.Region getRegion() {
 		return Region;
 	}
 	/**
 	 * @param region the region to set
 	 */
-	public void setRegion(Region region) {
+	public void setRegion(com.demo.second.Region region) {
 		Region = region;
 	}
 	/**

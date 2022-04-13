@@ -23,7 +23,7 @@ public class main{
             //{
             /********* Query Definition **********/
             TravelDescription queryDesc = new TravelDescription();
-            queryDesc.setAccommodation(TravelDescription.AccommodationTypes.ThreeStars);
+           // queryDesc.setAccommodation(TravelDescription.AccommodationTypes.ThreeStars);
             queryDesc.setDuration(10);
             queryDesc.setHolidayType("Recreation");
             queryDesc.setNumberOfPersons(4);
