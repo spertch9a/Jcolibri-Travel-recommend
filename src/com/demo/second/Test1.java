@@ -5,17 +5,23 @@ package com.demo.second;
 
 
 
+import com.demo.app.Region;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.local.similaritry.Euclidienne;
 import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.*;
 import es.ucm.fdi.gaia.jcolibri.connector.DataBaseConnector;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
 import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
+import es.ucm.fdi.gaia.jcolibri.method.retain.StoreCasesMethod;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.selection.SelectCases;
+import es.ucm.fdi.gaia.jcolibri.method.revise.DefineNewIdsMethod;
 import es.ucm.fdi.gaia.jcolibri.util.FileIO;
 
 import java.util.ArrayList;
@@ -63,139 +69,37 @@ public class Test1 implements StandardCBRApplication {
     public void cycle(CBRQuery cbrQuery) {
 
         /********* NumericSim Retrieval **********/
-
-        //similarityDialog.setVisible(true);
-        NNConfig config = new NNConfig();
-
-        config.setDescriptionSimFunction(new Average());
+//old cofing was here
 
 
-        Attribute attribute;
-
-        //SimilConfigPanel similConfig;
-        jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction function;
-
-        //similConfig = nom;
-        attribute = new Attribute("Temperature", TravelDescription.class);
-        config.addMapping(attribute, new Euclidienne());
-        //config.setWeight(attribute,0.1);
-
-        attribute = new Attribute("Age", TravelDescription.class);
-        config.addMapping(attribute, new Euclidienne());
-        //	config.setWeight(attribute,0.1);
-
-        attribute = new Attribute("Poids", TravelDescription.class);
-        config.addMapping(attribute, new Euclidienne());
-        //	config.setWeight(attribute,0.1);
-        attribute = new Attribute("glasgow", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-//        config.setWeight(attribute, 0.1);
 
 
-        attribute = new Attribute("tonus", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //config.setWeight(attribute,0.1);
-
-        attribute = new Attribute("conscient", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
+        //end of old config
 
 
-        attribute = new Attribute("convulsion", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
 
-        attribute = new Attribute("vomissement", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
-        attribute = new Attribute("motrice", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);*/
-        attribute = new Attribute("mouvement", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
-        attribute = new Attribute("reflexe", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
+        //new config
+        /********* NumericSim Retrieval **********/
 
+        NNConfig simConfig = new NNConfig();
+        simConfig.setDescriptionSimFunction(new Average());
+        simConfig.addMapping(new Attribute("Accommodation", com.demo.app.TravelDescription.class),
+                new Equal());
+        Attribute duration = new Attribute("Duration", com.demo.app.TravelDescription.class);
+        simConfig.addMapping(duration, new Interval(31));
+        simConfig.setWeight(duration, 0.5);
+        simConfig.addMapping(new Attribute("HolidayType", com.demo.app.TravelDescription.class), new Equal());
+        simConfig.addMapping(new Attribute("NumberOfPersons", com.demo.app.TravelDescription.class), new Equal());
 
-        attribute = new Attribute("fracture", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //config.setWeight(attribute,0.1);*/
+        simConfig.addMapping(new Attribute("Region",   com.demo.app.TravelDescription.class), new Average());
+        simConfig.addMapping(new Attribute("region",   com.demo.app.Region.class), new Equal());
+        simConfig.addMapping(new Attribute("city",     com.demo.app.Region.class), new Equal());
+        simConfig.addMapping(new Attribute("airport",  com.demo.app.Region.class), new Equal());
+        simConfig.addMapping(new Attribute("currency", Region.class), new Equal());
 
-        attribute = new Attribute("Pas", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
-        attribute = new Attribute("tempextr", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-//        config.setWeight(attribute, 0.1);
+        //end of new config
 
 
-        attribute = new Attribute("pad", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);*/
-
-        attribute = new Attribute("trc", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);
-
-        attribute = new Attribute("marbure", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("cyanose", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("rales", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //config.setWeight(attribute,0.1);*/
-
-        attribute = new Attribute("diurese", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //	config.setWeight(attribute,0.1);*/
-
-        attribute = new Attribute("spo2", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("hemoragie", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("sexe", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-
-
-        attribute = new Attribute("EncBranchique", TravelDescription.class);
-        config.addMapping(attribute, new Equal());
-        //config.setWeight(attribute,0.1);
-
-        attribute = new Attribute("Oedeme", TraumaDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("corpsE", TraumaDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-
-        attribute = new Attribute("Fc", TraumaDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
-
-        attribute = new Attribute("fr", TraumaDescription.class);
-        config.addMapping(attribute, new Equal());
-        ///had weight
-        // config.setWeight(attribute, 0.1);
 
 
 //i think this is the culprit
@@ -203,7 +107,7 @@ public class Test1 implements StandardCBRApplication {
         // modified
         // config.setDescriptionSimFunction(new Average());
         // Execute NN
-        Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), cbrQuery, config);
+        Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), cbrQuery, simConfig);
         evaltogather = eval;
         // Select k cases
 
@@ -234,7 +138,7 @@ public class Test1 implements StandardCBRApplication {
         casestoreturn = selectedcases;
         //to print the cases after i shortened them to what i want
         System.out.println("Combined + " + k + " cases gathered");
-        for (jcolibri.cbrcore.CBRCase c : selectedcases)
+        for (CBRCase c : selectedcases)
             System.out.println(c);
 
 
@@ -245,15 +149,14 @@ public class Test1 implements StandardCBRApplication {
     }
 
 
+    //ADDITIONAL FUNCTIONS...
+
+
     //This function is to adapt new casess to the database
 
-    public void caseAdaption(TraumaDescription mytraumadescription, TraumaSolution mytraumasolution) throws ExecutionException {
+    public void caseAdaption(TravelDescription mytraumadescription, TravelSolution mytraumasolution) throws ExecutionException, jcolibri.exception.ExecutionException {
         configure();
-        try {
-            preCycle();
-        } catch (jcolibri.exception.ExecutionException e) {
-            e.printStackTrace();
-        }
+        preCycle();
         CBRCase mycasetolearn = new CBRCase();
         System.out.println("my traumadescription " + mytraumadescription);
 
@@ -270,14 +173,10 @@ public class Test1 implements StandardCBRApplication {
         casestoLearnt.add(mycasetolearn);
 
         HashMap<Attribute, Object> componentsKeys = new HashMap<Attribute, Object>();
-        componentsKeys.put(new Attribute("Id", TraumaDescription.class), "theid");
-        componentsKeys.put(new Attribute("Id", TraumaSolution.class), "theid");
+        componentsKeys.put(new Attribute("Id", TravelDescription.class), "theid");
+        componentsKeys.put(new Attribute("Id", TravelSolution.class), "theid");
         //componentsKeys.put(new Attribute("id",Region.class), 7);
-        try {
-            DefineNewIdsMethod.defineNewIdsMethod(mycasetolearn, componentsKeys);
-        } catch (jcolibri.exception.ExecutionException e) {
-            e.printStackTrace();
-        }
+        DefineNewIdsMethod.defineNewIdsMethod(mycasetolearn, componentsKeys);
 
         System.out.println("Case with new Id");
         System.out.println(mycasetolearn);
@@ -293,8 +192,6 @@ public class Test1 implements StandardCBRApplication {
     }
 
 
-    //ADDITIONAL FUNCTIONS...
-
 
     public CBRQuery getQuery(TraumaDescription request) {
         CBRQuery query = new CBRQuery();
@@ -306,7 +203,7 @@ public class Test1 implements StandardCBRApplication {
 
 
 
-
+//Needs to be modified to show all the cases
     public void showCases(Collection<RetrievalResult> eval, Collection<CBRCase> selected) {
         MaladieInsertRepo maladierepo = new MaladieInsertRepo();
 
@@ -336,3 +233,139 @@ public class Test1 implements StandardCBRApplication {
 
 
 }
+
+//
+// //similarityDialog.setVisible(true);
+//        NNConfig config = new NNConfig();
+//
+//        config.setDescriptionSimFunction(new Average());
+//
+//
+//        Attribute attribute;
+//
+//        //SimilConfigPanel similConfig;
+//        LocalSimilarityFunction function;
+//
+//        //similConfig = nom;
+//        attribute = new Attribute("Temperature", TravelDescription.class);
+//        config.addMapping(attribute, (es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction) new Euclidienne());
+//        //config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("Age", TravelDescription.class);
+//        config.addMapping(attribute, (es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction) new Euclidienne());
+//        //	config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("Poids", TravelDescription.class);
+//        config.addMapping(attribute, (es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction) new Euclidienne());
+//        //	config.setWeight(attribute,0.1);
+//        attribute = new Attribute("glasgow", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+////        config.setWeight(attribute, 0.1);
+//
+//
+//        attribute = new Attribute("tonus", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("conscient", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//
+//
+//        attribute = new Attribute("convulsion", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("vomissement", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//        attribute = new Attribute("motrice", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);*/
+//        attribute = new Attribute("mouvement", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//        attribute = new Attribute("reflexe", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//
+//
+//        attribute = new Attribute("fracture", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //config.setWeight(attribute,0.1);*/
+//
+//        attribute = new Attribute("Pas", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//        attribute = new Attribute("tempextr", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+////        config.setWeight(attribute, 0.1);
+//
+//
+//        attribute = new Attribute("pad", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);*/
+//
+//        attribute = new Attribute("trc", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("marbure", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("cyanose", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("rales", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //config.setWeight(attribute,0.1);*/
+//
+//        attribute = new Attribute("diurese", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //	config.setWeight(attribute,0.1);*/
+//
+//        attribute = new Attribute("spo2", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("hemoragie", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("sexe", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//
+//
+//        attribute = new Attribute("EncBranchique", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        //config.setWeight(attribute,0.1);
+//
+//        attribute = new Attribute("Oedeme", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("corpsE", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//
+//        attribute = new Attribute("Fc", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+//        attribute = new Attribute("fr", TravelDescription.class);
+//        config.addMapping(attribute, new Equal());
+//        ///had weight
+//        // config.setWeight(attribute, 0.1);
+//
+
