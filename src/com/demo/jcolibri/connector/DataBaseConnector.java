@@ -1,11 +1,11 @@
 package com.demo.jcolibri.connector;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CaseBaseFilter;
-import jcolibri.cbrcore.CaseComponent;
-import jcolibri.cbrcore.Connector;
-import jcolibri.exception.InitializingException;
-import jcolibri.util.FileIO;
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CaseBaseFilter;
+import com.demo.jcolibri.cbrcore.CaseComponent;
+import com.demo.jcolibri.cbrcore.Connector;
+import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
+import es.ucm.fdi.gaia.jcolibri.util.FileIO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class DataBaseConnector implements Connector {
+public abstract class DataBaseConnector implements Connector {
 
 	SessionFactory sessionFactory;
 	private String descriptionClassName;

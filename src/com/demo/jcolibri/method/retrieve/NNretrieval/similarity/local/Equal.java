@@ -1,6 +1,7 @@
 package com.demo.jcolibri.method.retrieve.NNretrieval.similarity.local;
 
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+
 
 
 /**
@@ -17,7 +18,7 @@ public class Equal implements LocalSimilarityFunction {
 	 *            Object.
 	 * @return the result of apply the similarity function.
 	 */
-    public double compute(Object o1, Object o2) throws jcolibri.exception.NoApplicableSimilarityFunctionException{
+    public double compute(Object o1, Object o2) throws com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException{
         if ((o1 == null) || (o2 == null))
             return 0;
         return o1.equals(o2) ? 1 : 0;

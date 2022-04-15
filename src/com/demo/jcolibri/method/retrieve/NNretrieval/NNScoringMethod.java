@@ -8,27 +8,17 @@
  */
 package com.demo.jcolibri.method.retrieve.NNretrieval;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CBRQuery;
-import jcolibri.method.retrieve.NNretrieval.NNConfig;
-import jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
-import jcolibri.method.retrieve.RetrievalResult;
-import jcolibri.util.ProgressController;
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRQuery;
+import com.demo.jcolibri.method.retrieve.NNretrieval.NNConfig;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.RetrievalResult;
+import com.demo.jcolibri.util.ProgressController;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Performs a Nearest Neighbor numeric scoring comparing attributes. 
- * It uses global similarity functions to compare compound attributes 
- * (CaseComponents) and 
- * local similarity functions to compare simple attributes.
- * The configuration of this method is stored in the NNConfig object.
- * @author Juan A. Recio-Garc�a
- * @version 2.0
- * @see jcolibri.method.retrieve.NNretrieval.NNConfig
- */
 public class NNScoringMethod {
 
 	

@@ -13,7 +13,9 @@ import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
 
 import java.util.Collection;
 
-
+//learning
+// 	public void learnCases(Collection<CBRCase> cases) {
+//	//	workingCases.addAll(cases);
 public class main{
     public static void main(String[] args) {
 

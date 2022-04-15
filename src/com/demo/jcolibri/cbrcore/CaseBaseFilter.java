@@ -9,7 +9,7 @@
 
 package com.demo.jcolibri.cbrcore;
 
-import jcolibri.cbrcore.Filter;
+
 
 /**
  * Filter to retrieve cases. This will be used in a future.

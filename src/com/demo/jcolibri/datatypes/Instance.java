@@ -8,9 +8,10 @@
  */
 package com.demo.jcolibri.datatypes;
 
-import jcolibri.connector.TypeAdaptor;
-import jcolibri.exception.OntologyAccessException;
-import jcolibri.util.OntoBridgeSingleton;
+
+import com.demo.jcolibri.connector.TypeAdaptor;
+import com.demo.jcolibri.exception.OntologyAccessException;
+import com.demo.jcolibri.util.OntoBridgeSingleton;
 
 /**
  * Represents an Instance of an ontology.<p>

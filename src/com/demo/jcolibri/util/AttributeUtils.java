@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.demo.jcolibri.cbrcore.CaseComponent;
 import jcolibri.cbrcore.*;
 import jcolibri.connector.TypeAdaptor;
 import jcolibri.exception.AttributeAccessException;
@@ -27,8 +28,9 @@ public class AttributeUtils {
 
 	/**
 	 * Returns the list of attributes of a class.
+	 * @param c
 	 */
-	public static Attribute[] getAttributes(Class c)
+	public static Attribute[] getAttributes(CaseComponent c)
 	{
 		Field[] fields = c.getDeclaredFields();
 		Attribute[] res = new Attribute[fields.length];

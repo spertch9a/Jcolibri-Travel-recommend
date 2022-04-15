@@ -8,11 +8,11 @@
  */
 package com.demo.jcolibri.casebase;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CBRCaseBase;
-import jcolibri.cbrcore.CaseBaseFilter;
-import jcolibri.cbrcore.Connector;
-import jcolibri.exception.AttributeAccessException;
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRCaseBase;
+import com.demo.jcolibri.cbrcore.CaseBaseFilter;
+import com.demo.jcolibri.cbrcore.Connector;
+
 
 import java.util.Collection;
 
@@ -24,27 +24,24 @@ import java.util.Collection;
  * @author Juan A. Recio-Garc�a
  *
  */
-public class IDIndexedLinealCaseBase implements CBRCaseBase {
+public abstract class IDIndexedLinealCaseBase implements CBRCaseBase {
 
 	private Connector connector;
 	private Collection<CBRCase> cases;
 	private java.util.HashMap<Object, CBRCase> index;
 
-	/**
-	 * Private method that executes the indexing of cases.
-	 * @param cases
-	 */
-	private void indexCases(Collection<CBRCase> cases)
-	{
-		index = new java.util.HashMap<Object, CBRCase>();
-		for(CBRCase c: cases)
-		{
-			try {
-				Object o = c.getDescription().getIdAttribute().getValue(c.getDescription());
-				index.put(o, c);
-			} catch (AttributeAccessException e) { }
-		}
-	}
+
+//	private void indexCases(Collection<CBRCase> cases)
+//	{
+//		index = new HashMap<Object, CBRCase>();
+//		for(CBRCase c: cases)
+//		{
+//			try {
+//				Object o = c.getDescription().getIdAttribute().getValue(c.getDescription());
+//				index.put(o, c);
+//			} catch (AttributeAccessException e) { }
+//		}
+//	}
 	
 	/* (non-Javadoc)
 	 * @see jcolibri.cbrcore.CBRCaseBase#init()
@@ -52,7 +49,7 @@ public class IDIndexedLinealCaseBase implements CBRCaseBase {
 	public void init(Connector connector) {
 		this.connector = connector;
 		cases = this.connector.retrieveAllCases();	
-		indexCases(cases);
+		//indexCases(cases);
 			
 	}
 	
@@ -87,16 +84,20 @@ public class IDIndexedLinealCaseBase implements CBRCaseBase {
 		return null;
 	}
 
+	public void learnCases() {
+
+	}
+
 
 	/* (non-Javadoc)
 	 * @see jcolibri.cbrcore.CBRCaseBase#learnCases(java.util.Collection)
 	 */
-	public void learnCases(Collection<CBRCase> cases) {
-		connector.storeCases(cases);
-		indexCases(cases);
-		this.cases.addAll(cases);
-
-	}
+//	public void learnCases(Collection<CBRCase> cases) {
+//		//connector.storeCases(cases);
+//		indexCases(cases);
+//		this.cases.addAll(cases);
+//
+//	}
 
 	/**
 	 * Returns the case that corresponds with the id parameter.

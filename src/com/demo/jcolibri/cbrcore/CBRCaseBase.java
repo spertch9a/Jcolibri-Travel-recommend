@@ -8,9 +8,8 @@
  */
 package com.demo.jcolibri.cbrcore;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CaseBaseFilter;
-import jcolibri.cbrcore.Connector;
+import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
+
 
 import java.util.Collection;
 
@@ -32,7 +31,7 @@ public interface CBRCaseBase {
      * Initializes the case base. This methods recibes the connector that manages the persistence media.
      *
      */
-    public void init(Connector connector) throws jcolibri.exception.InitializingException;
+    public void init(Connector connector) throws InitializingException, InitializingException;
     
     
     /**
@@ -48,7 +47,7 @@ public interface CBRCaseBase {
 	 * 
 	 * @return all the cases available on this case base
 	 */
-	public Collection<jcolibri.cbrcore.CBRCase> getCases();
+	public Collection<CBRCase> getCases();
 	
 	
     /**
@@ -56,7 +55,7 @@ public interface CBRCaseBase {
      * @param filter a case base filter
      * @return a collection of cases
      */
-    public Collection<jcolibri.cbrcore.CBRCase> getCases(CaseBaseFilter filter);
+    public Collection<CBRCase> getCases(CaseBaseFilter filter);
 
 
 	/**
@@ -65,7 +64,7 @@ public interface CBRCaseBase {
 	 * @param cases
 	 *            to be added
 	 */
-	public void learnCases(Collection<jcolibri.cbrcore.CBRCase> cases);
+	public void learnCases(Collection<CBRCase> cases);
 
 	/**
 	 * Removes a collection of new CBRCase objects to the current case base

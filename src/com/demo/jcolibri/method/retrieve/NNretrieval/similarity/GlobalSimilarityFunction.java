@@ -8,10 +8,11 @@
  */
 package com.demo.jcolibri.method.retrieve.NNretrieval.similarity;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CBRQuery;
-import jcolibri.cbrcore.CaseComponent;
-import jcolibri.method.retrieve.NNretrieval.NNConfig;
+
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CaseComponent;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRQuery;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
 
 /**
  * Defines the methods of a global similarity function.

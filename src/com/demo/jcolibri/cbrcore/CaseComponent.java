@@ -20,5 +20,5 @@ public interface CaseComponent {
 	 * Returns the attribute that identifies the component. 
 	 * An id-attribute must be unique for each component.
 	 */
-	jcolibri.cbrcore.Attribute getIdAttribute();
+	Attribute getIdAttribute();
 }

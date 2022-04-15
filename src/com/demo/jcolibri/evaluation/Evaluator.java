@@ -8,13 +8,9 @@
  */
 package com.demo.jcolibri.evaluation;
 
-import jcolibri.cbraplications.StandardCBRApplication;
-import jcolibri.evaluation.EvaluationReport;
 
-/**
- * This abstract class defines the common behaviour of an evaluator.
- * @author Juanan
- */
+import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
+
 public abstract class Evaluator {
 	
 	/** Initializes the evaluator with the CBR application to evaluate 

@@ -9,6 +9,8 @@
 package com.demo.jcolibri.method.retrieve.NNretrieval.similarity;
 
 
+import es.ucm.fdi.gaia.jcolibri.exception.NoApplicableSimilarityFunctionException;
+
 /**
  * Defines the methods of a local similarity function.
  * A local similarity function is applied to simple attributes by the NN algorithm.
@@ -23,7 +25,7 @@ public interface LocalSimilarityFunction {
    	 * @param queryObject object of the query
    	 * @return a value between [0..1]
    	 */
-    	public double compute(Object caseObject, Object queryObject) throws jcolibri.exception.NoApplicableSimilarityFunctionException;
+    	public double compute(Object caseObject, Object queryObject) throws NoApplicableSimilarityFunctionException, com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException;
 	
 	/**
 	 * Indicates if the function is applicable to two objects

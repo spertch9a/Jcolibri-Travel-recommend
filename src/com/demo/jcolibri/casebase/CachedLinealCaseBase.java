@@ -9,24 +9,19 @@
 
 package com.demo.jcolibri.casebase;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CBRCaseBase;
-import jcolibri.cbrcore.CaseBaseFilter;
-import jcolibri.cbrcore.Connector;
-import jcolibri.exception.InitializingException;
 
+
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRCaseBase;
+import com.demo.jcolibri.cbrcore.CaseBaseFilter;
+import com.demo.jcolibri.cbrcore.Connector;
+import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * Cached case base that only persists cases when closing.
- * learn() and forget() are not synchronized with the persistence until close() is invoked.
- * <p>
- * This class presents better performance that LinelCaseBase as only access to the persistence once. This case base is used for evaluation.
- * 
- * @author Juan A. Recio-Garc�a
- * @see jcolibri.casebase.LinealCaseBase
- */
-public class CachedLinealCaseBase implements CBRCaseBase {
+
+public abstract class CachedLinealCaseBase implements CBRCaseBase {
 
 	private Connector connector;
 	private Collection<CBRCase> originalCases;
@@ -36,12 +31,12 @@ public class CachedLinealCaseBase implements CBRCaseBase {
 	 * Closes the case base saving or deleting the cases of the persistence media
 	 */
 	public void close() {
-		java.util.ArrayList<CBRCase> casestoRemove = new java.util.ArrayList<CBRCase>(originalCases);
+		java.util.ArrayList<CBRCase> casestoRemove = new java.util.ArrayList<CBRCase>((Collection<? extends CBRCase>) originalCases);
 		casestoRemove.removeAll(workingCases);
 		org.apache.commons.logging.LogFactory.getLog(this.getClass()).info("Deleting "+casestoRemove.size()+" cases from storage media");
 		connector.deleteCases(casestoRemove);
 		
-		java.util.ArrayList<CBRCase> casestoStore = new java.util.ArrayList<CBRCase>(workingCases);
+		Collection<CBRCase> casestoStore = new ArrayList<CBRCase>(workingCases);
 		casestoStore.removeAll(originalCases);
 		org.apache.commons.logging.LogFactory.getLog(this.getClass()).info("Storing "+casestoStore.size()+" cases into storage media");
 		
@@ -61,6 +56,7 @@ public class CachedLinealCaseBase implements CBRCaseBase {
 
 	/**
 	 * Returns working cases.
+	 * @return
 	 */
 	public Collection<CBRCase> getCases() {
 		return workingCases;
@@ -68,11 +64,16 @@ public class CachedLinealCaseBase implements CBRCaseBase {
 
 	/**
 	 * TODO.
+	 * @return
 	 */
 	public Collection<CBRCase> getCases(CaseBaseFilter filter) {
 		// TODO
 		return null;
 	}
+
+//	public void learnCases(Collection<CBRCase> cases) {
+//
+//	}
 
 	/**
 	 * Initializes the Case Base with the cases read from the given connector.
@@ -80,15 +81,15 @@ public class CachedLinealCaseBase implements CBRCaseBase {
 	public void init(Connector connector) throws InitializingException {
 		this.connector = connector;
 		originalCases = this.connector.retrieveAllCases();	
-		workingCases = new java.util.ArrayList<CBRCase>(originalCases);
+		workingCases = new java.util.ArrayList<CBRCase>((Collection<? extends CBRCase>) originalCases);
 	}
 
 	/**
 	 * Learns cases that are only saved when closing the Case Base.
 	 */
-	public void learnCases(Collection<CBRCase> cases) {
-		workingCases.addAll(cases);
+//	public void learnCases(Collection<CBRCase> cases) {
+	//	workingCases.addAll(cases);
 
 	}
 
-}
+

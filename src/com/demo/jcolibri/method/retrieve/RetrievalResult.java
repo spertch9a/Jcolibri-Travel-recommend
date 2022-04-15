@@ -8,7 +8,7 @@
  */
 package com.demo.jcolibri.method.retrieve;
 
-import jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRCase;
 
 /**
  * Stores the retrieval information. It contais a <case, evaluation> pair.

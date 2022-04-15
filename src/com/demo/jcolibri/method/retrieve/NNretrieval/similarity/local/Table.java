@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 import org.apache.commons.logging.LogFactory;
 
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
 /**
  * Similarity function that uses a table to obtain the similarity between two values. 

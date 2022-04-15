@@ -9,8 +9,7 @@
 
 package com.demo.jcolibri.cbrcore;
 
-import jcolibri.cbrcore.CBRQuery;
-import jcolibri.cbrcore.CaseComponent;
+
 
 /**
  * Interface that represents any Case structure of jCOLIBRI. It is composed by several CaseComponents:
@@ -78,4 +77,7 @@ public class CBRCase extends CBRQuery {
 		return super.toString()+"[Solution: "+solution+"][Sol.Just.: "+justificationOfSolution+"][Result: "+result+"]";
 	}
 
+	public Object getID() {
+		return new Object();
+	}
 }

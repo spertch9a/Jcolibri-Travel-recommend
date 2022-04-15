@@ -1,7 +1,7 @@
 package com.demo.jcolibri.method.retrieve.NNretrieval.similarity.local;
 
 
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
 /**
  * This function returns a similarity value depending of the biggest substring
@@ -19,14 +19,14 @@ public class MaxString implements LocalSimilarityFunction {
 	 *            String.
 	 * @return result of apply the similarity funciton.
 	 */
-	public double compute(Object s, Object t) throws jcolibri.exception.NoApplicableSimilarityFunctionException
+	public double compute(Object s, Object t) throws com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException
 {
 		if ((s == null) || (t == null))
 			return 0;
 		if (!(s instanceof String))
-			throw new jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), s.getClass());
+			throw new com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), s.getClass());
 		if (!(t instanceof String))
-			throw new jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), s.getClass());
+			throw new com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), s.getClass());
 
 
 		String news = (String) s;

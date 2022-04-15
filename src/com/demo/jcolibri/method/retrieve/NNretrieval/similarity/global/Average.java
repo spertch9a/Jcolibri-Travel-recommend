@@ -8,7 +8,8 @@
  */
 package com.demo.jcolibri.method.retrieve.NNretrieval.similarity.global;
 
-import jcolibri.method.retrieve.NNretrieval.similarity.StandardGlobalSimilarityFunction;
+
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.StandardGlobalSimilarityFunction;
 
 
 /**

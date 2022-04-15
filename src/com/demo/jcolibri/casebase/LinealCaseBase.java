@@ -8,26 +8,17 @@
  */
 package com.demo.jcolibri.casebase;
 
-import jcolibri.cbrcore.CBRCase;
-import jcolibri.cbrcore.CBRCaseBase;
-import jcolibri.cbrcore.CaseBaseFilter;
-import jcolibri.cbrcore.Connector;
+
+
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRCaseBase;
+import com.demo.jcolibri.cbrcore.CaseBaseFilter;
+import com.demo.jcolibri.cbrcore.Connector;
 
 import java.util.Collection;
 
-/**
- * Basic Linal Case Base that stores cases into a List.
- * This class does not includes any kind of caching mechanism. 
- * That way, if you call to learn() or forget() cases are automatically stored/removed to/from the persistence media. 
- * This will be a performance problem if you plan to learn/forget in multiple steps. This case base is unrecommended for evaluation.
- * <p>
- * Depending on your requirements the CachedLinealCaseBase could be more suitable.
- * 
- * @author Juan A. Recio-Garc�a
- * @see jcolibri.casebase.CachedLinealCaseBase
- *
- */
-public class LinealCaseBase implements CBRCaseBase {
+
+public abstract class LinealCaseBase implements CBRCaseBase {
 
 	private Connector connector;
 	private Collection<CBRCase> cases;

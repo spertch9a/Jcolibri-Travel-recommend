@@ -8,8 +8,6 @@
  */
 package com.demo.jcolibri.cbrcore;
 
-import jcolibri.cbrcore.CaseComponent;
-import jcolibri.exception.AttributeAccessException;
 
 
 /**
@@ -40,17 +38,17 @@ public class CBRQuery{
 	/**
 	 * Returns the ID value of the Query/Case that is the ID attribute of its description component.
 	 */
-	public Object getID()
-	{
-		if(this.description==null)
-			return null;
-		else
-			try {
-				return description.getIdAttribute().getValue(description);
-			} catch (AttributeAccessException e) {
-				return null;
-			}
-	}
+//	public Object getID()
+//	{
+//		if(this.description==null)
+//			return null;
+//		else
+//			try {
+//				return description.getIdAttribute().getValue(description);
+//			} catch (AttributeAccessException e) {
+//				return null;
+//			}
+//	}
 	
     public String toString()
     {

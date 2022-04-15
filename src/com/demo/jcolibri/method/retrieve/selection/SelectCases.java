@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.demo.jcolibri.cbrcore.CBRCase;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
 import jcolibri.cbrcore.CBRCase;
 import jcolibri.method.retrieve.RetrievalResult;
 
@@ -45,7 +47,7 @@ public class SelectCases
      */
     public static Collection<CBRCase> selectTopK(Collection<RetrievalResult> cases, int k)
     {
-	ArrayList<CBRCase> res = new ArrayList<CBRCase>();
+	ArrayList<es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase> res = new ArrayList<>();
 	Iterator<RetrievalResult> cIter  =cases.iterator(); 
 	for(int c=0; c<k && c<cases.size(); c++)
 	    res.add(cIter.next().get_case());

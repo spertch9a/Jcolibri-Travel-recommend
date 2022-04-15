@@ -8,7 +8,8 @@
  */
 package com.demo.jcolibri.connector.databaseutils;
 
-import jcolibri.connector.TypeAdaptor;
+
+import com.demo.jcolibri.connector.TypeAdaptor;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

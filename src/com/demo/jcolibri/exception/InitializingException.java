@@ -9,7 +9,7 @@
 package com.demo.jcolibri.exception;
 
 
-import jcolibri.exception.ExecutionException;
+
 
 /**
  * Exception in the initialization of an object.

@@ -3,7 +3,8 @@
  */
 package com.demo.jcolibri.datatypes;
 
-import jcolibri.connector.TypeAdaptor;
+import es.ucm.fdi.gaia.jcolibri.connector.TypeAdaptor;
+
 
 /**
  * @author Juanan

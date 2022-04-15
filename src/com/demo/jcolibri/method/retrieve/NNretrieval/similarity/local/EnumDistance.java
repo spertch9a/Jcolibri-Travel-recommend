@@ -2,7 +2,7 @@ package com.demo.jcolibri.method.retrieve.NNretrieval.similarity.local;
 
 
 
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
 
 /**
@@ -22,13 +22,13 @@ public class EnumDistance implements LocalSimilarityFunction {
 	 *            StringEnum or String
 	 * @return the result of apply the similarity function.
 	 */
-	public double compute(Object o1, Object o2) throws jcolibri.exception.NoApplicableSimilarityFunctionException{
+	public double compute(Object o1, Object o2) throws com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException{
 		if ((o1 == null) || (o2 == null))
 			return 0;
 		if(!(o1 instanceof Enum))
-			throw new jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), o1.getClass());
+			throw new com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), o1.getClass());
 		if(!(o2 instanceof Enum))
-			throw new jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), o2.getClass());
+			throw new com.demo.jcolibri.exception.NoApplicableSimilarityFunctionException(this.getClass(), o2.getClass());
 		
 		Enum e1 = (Enum)o1;
 		Enum e2 = (Enum)o2;

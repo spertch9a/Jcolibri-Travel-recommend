@@ -9,9 +9,9 @@
 package com.demo.jcolibri.method.retrieve.NNretrieval;
 
 
-import jcolibri.cbrcore.Attribute;
-import jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
-import jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import com.demo.jcolibri.cbrcore.Attribute;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
+import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
 /**
  * This class stores the configuration for the NN retrieval method.

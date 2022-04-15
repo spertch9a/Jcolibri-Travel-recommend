@@ -9,24 +9,11 @@
 package com.demo.jcolibri.cbraplications;
 
 
-import jcolibri.cbrcore.CBRCaseBase;
-import jcolibri.cbrcore.CBRQuery;
-import jcolibri.exception.ExecutionException;
+import com.demo.jcolibri.cbrcore.CBRCase;
+import com.demo.jcolibri.cbrcore.CBRCaseBase;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRQuery;
+import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
 
-
-/**
- * Defines the method of an standard CBR application.
- * It is composed by:
- * <ul>
- * <li>A configuration method to set up the application.
- * <li>A preCycle that loads cases and prepares the application to run.
- * <li>The cycle method that runs a CBR step using the given query.
- * <li>A postCycle in charge of finishing the application.
- * </ul>
- * 
- * @author Juan A. Recio-Garc�a
- *
- */
 public interface StandardCBRApplication
 {
 	/**
@@ -45,8 +32,9 @@ public interface StandardCBRApplication
     /**
      * Executes a CBR cycle with the given query.
      * @throws ExecutionException
+     * @param query
      */
-    public void cycle(CBRQuery query) throws ExecutionException;
+    public void cycle(CBRCase query) throws ExecutionException;
 
     /**
      * Runs the code to shutdown the application. Typically it closes the connector.

@@ -8,17 +8,11 @@
  */
 package com.demo.jcolibri.cbrcore;
 
+import com.demo.jcolibri.exception.AttributeAccessException;
+
 import java.lang.reflect.Field;
 
-import jcolibri.exception.AttributeAccessException;
 
-/**
- * This class identifies an attribute of a CaseComponent (Java Bean). Attributes are part of CaseComponents and CaseComponentes build a case. 
- * Note that each CaseComponent must be a Java Bean, so this class represents a field of a Java Bean (with its getXXX() and setXXX() methods).
- * 
- * @see jcolibri.cbrcore.CaseComponent
- * @author Juan A. Recio-Garc�a
- */
 public class Attribute {
 
 	private Field field;
@@ -69,11 +63,7 @@ public class Attribute {
 		return field.getType();
 	}
 	
-	/**
-	 * Returns the value of the attribute for a concrete object. Of course, the object must be instance of the class that this attribute belongs to.
-	 * @param obj Instance to obtain the attribute from
-	 * @throws AttributeAccessException
-	 */
+
 	public Object getValue(Object obj) throws AttributeAccessException
 	{
 		Object res = null;
