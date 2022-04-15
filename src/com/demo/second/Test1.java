@@ -154,7 +154,7 @@ public class Test1 implements StandardCBRApplication {
 
     //This function is to adapt new casess to the database
 
-    public void caseAdaption(TravelDescription mytraumadescription, TravelSolution mytraumasolution) throws ExecutionException, jcolibri.exception.ExecutionException {
+    public void caseAdaption(TravelDescription mytraumadescription, TravelSolution mytraumasolution) throws ExecutionException, ExecutionException {
         configure();
         preCycle();
         CBRCase mycasetolearn = new CBRCase();
@@ -193,7 +193,7 @@ public class Test1 implements StandardCBRApplication {
 
 
 
-    public CBRQuery getQuery(TraumaDescription request) {
+    public CBRQuery getQuery(TravelDescription request) {
         CBRQuery query = new CBRQuery();
         query.setDescription(request);
 
@@ -205,7 +205,8 @@ public class Test1 implements StandardCBRApplication {
 
 //Needs to be modified to show all the cases
     public void showCases(Collection<RetrievalResult> eval, Collection<CBRCase> selected) {
-        MaladieInsertRepo maladierepo = new MaladieInsertRepo();
+       //15/04/2022 ignored this next line
+       // MaladieInsertRepo maladierepo = new MaladieInsertRepo();
 
         cases = new ArrayList<RetrievalResult>();
         for (RetrievalResult rr : eval) {
@@ -220,12 +221,12 @@ public class Test1 implements StandardCBRApplication {
             RetrievalResult rr_case = cases.get(i);
             CBRCase mycase = rr_case.get_case();
             //for each case i get the description
-            TraumaDescription desc = (TraumaDescription) mycase.getDescription();
+            TravelDescription desc = (TravelDescription) mycase.getDescription();
             System.out.println("Case description");
             System.out.println(desc);
-            casestoreturn.add(maladierepo.makeCase(desc));
+            //casestoreturn.add(maladierepo.makeCase(desc));
             //i get the solution
-            TraumaSolution sol = (TraumaSolution) mycase.getSolution();
+            TravelSolution sol = (TravelSolution) mycase.getSolution();
             System.out.println("Case solution");
             System.out.println(sol);
         }
