@@ -6,7 +6,6 @@ package com.demo.second;
 
 
 import com.demo.app.Region;
-import com.demo.jcolibri.method.retrieve.NNretrieval.similarity.local.similaritry.Euclidienne;
 import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.*;
@@ -46,7 +45,7 @@ public class Test1 implements StandardCBRApplication {
         _connector =  new DataBaseConnector();
 //            // Init the ddbb connector with the config file
 //           _connector.initFromXMLfile(jcolibri.util.FileIO.findFile("main/java/com/ouss/reanimation/model/databaseconfig.xml"));
-        _connector.initFromXMLfile(FileIO.findFile("src/main/java/com/ouss/reanimation/model/databaseconfig.xml"));
+        _connector.initFromXMLfile(FileIO.findFile("com/demo/second/databaseconfig.xml"));
         // Create a Lineal case base for in-memory organization
         _caseBase = (CBRCaseBase) new LinealCaseBase();
     }

@@ -1,11 +1,11 @@
 <DataBaseConfiguration>
-	<HibernateConfigFile>com/demo/app/hibernate.cfg.xml</HibernateConfigFile>
+	<HibernateConfigFile>com/demo/second/hibernate.cfg.xml</HibernateConfigFile>
 
-	<DescriptionMappingFile>com/demo/app/TravelDescription.hbm.xml</DescriptionMappingFile>
+	<DescriptionMappingFile>com/demo/second/TravelDescription.hbm.xml</DescriptionMappingFile>
 
-	<DescriptionClassName>com.demo.app.TravelDescription</DescriptionClassName>
+	<DescriptionClassName>com.demo.second.TravelDescription</DescriptionClassName>
 
-	<SolutionMappingFile>com/demo/app/TravelSolution.hbm.xml</SolutionMappingFile>
+	<SolutionMappingFile>com/demo/second/TravelSolution.hbm.xml</SolutionMappingFile>
 
-	<SolutionClassName>com.demo.app.TravelSolution</SolutionClassName>
+	<SolutionClassName>com.demo.second.TravelSolution</SolutionClassName>
 </DataBaseConfiguration>
