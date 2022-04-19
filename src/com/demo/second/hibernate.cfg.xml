@@ -5,10 +5,10 @@
     <session-factory>
 
         <!-- Database connection settings -->
-        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/travelext</property>
-        <property name="connection.username">sa</property>
-		<property name="connection.password">thepassword</property>
+        <property name="connection.username">ouss</property>
+		<property name="connection.password">ousss</property>
 		
 <!--        &lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
 <!--        <property name="connection.pool_size">1</property>-->

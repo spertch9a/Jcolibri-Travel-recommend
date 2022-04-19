@@ -50,7 +50,7 @@ public class Test1 implements StandardCBRApplication {
         _caseBase = (CBRCaseBase) new LinealCaseBase();
     }
 
-    Collection<CBRCase> mycases;
+    public CBRCaseBase mycases;
 
     public CBRCaseBase preCycle() {
         try {
@@ -58,10 +58,13 @@ public class Test1 implements StandardCBRApplication {
         } catch (InitializingException e) {
             e.printStackTrace();
         }
+        //ziyada
+        mycases = _caseBase;
         for(CBRCase c: _caseBase.getCases())
             System.out.println(c);
         return _caseBase;
     }
+
 
 
     //    public void cycle(CBRQuery cbrQuery, int k)

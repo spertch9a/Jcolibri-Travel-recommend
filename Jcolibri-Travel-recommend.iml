@@ -10,9 +10,10 @@
     <orderEntry type="library" name="jar_files" level="project" />
     <orderEntry type="library" name="jCOLIBRI-3.2" level="project" />
     <orderEntry type="library" name="hsqldb" level="project" />
-    <orderEntry type="library" name="hibernate-core-5.2.12.Final" level="project" />
     <orderEntry type="library" name="xmlbeans-2.3.0" level="project" />
     <orderEntry type="library" name="jaxb-api-2.4.0-b180830.0359" level="project" />
     <orderEntry type="library" name="javax.activation-api-1.2.0" level="project" />
+    <orderEntry type="library" name="hibernate" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.28" level="project" />
   </component>
 </module>

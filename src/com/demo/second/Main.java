@@ -1,5 +1,6 @@
 package com.demo.second;
 
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
 //learning
 //	public void learnCases(Collection<CBRCase> cases) {
@@ -16,8 +17,13 @@ public class Main {
 
             System.out.println("Running preCycle()");
             test1.preCycle();
-
+            System.out.println(test1.mycases);
+            System.out.println("Items of the casebase");
+            for(CBRCase c: test1.mycases.getCases())
+                System.out.println(c);
             //The cycle will require a query description, so we'll make it before calling the cycle
+
+            System.out.println("Running the cycle");
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
